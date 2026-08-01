@@ -21,7 +21,7 @@ body {
   color: var(--text);
   font-family: var(--font-sans);
   line-height: 1.6;
-  padding-top: 48px;
+  padding-top: 96px;
 }
 
 a { color: var(--accent-blue); text-decoration: none; }
@@ -29,21 +29,25 @@ a:hover { text-decoration: underline; }
 
 /* nav */
 .tabbar {
-  position: fixed; top: 0; left: 0; right: 0; height: 48px;
-  background: var(--bg-elevated); border-bottom: 1px solid var(--border);
-  z-index: 100; overflow-x: auto;
+  position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+  max-width: calc(100% - 32px);
+  background: rgba(22, 27, 34, 0.75); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border); border-radius: 999px;
+  z-index: 100; overflow-x: auto; scrollbar-width: none;
 }
-.tabbar-inner { display: flex; height: 100%; }
+.tabbar::-webkit-scrollbar { display: none; }
+.tabbar-inner { display: flex; padding: 6px; gap: 2px; }
 .tab {
-  font-family: var(--font-mono); font-size: 13px; color: var(--text-dim);
-  background: transparent; border: none; border-right: 1px solid var(--border);
-  padding: 0 16px; cursor: pointer; white-space: nowrap;
+  font-family: var(--font-sans); font-weight: 500; font-size: 14px; color: var(--text-dim);
+  background: transparent; border: none; border-radius: 999px;
+  padding: 8px 18px; cursor: pointer; white-space: nowrap;
+  transition: color 0.2s ease, background 0.2s ease;
 }
-.tab:hover { color: var(--text); background: rgba(255,255,255,0.03); }
-.tab.active { color: var(--accent-green); border-bottom: 2px solid var(--accent-green); background: var(--bg); }
+.tab:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+.tab.active { color: #0d1117; background: var(--accent-green); font-weight: 600; }
 
 /* hero */
-.hero { min-height: calc(100vh - 48px); display: flex; align-items: center; padding: 0 24px; }
+.hero { min-height: calc(100vh - 96px); display: flex; align-items: center; padding: 0 24px; }
 .hero-content { max-width: 720px; margin: 0 auto; }
 .prompt-line { font-family: var(--font-mono); color: var(--text-dim); font-size: 14px; }
 .prompt { color: var(--accent-green); }
